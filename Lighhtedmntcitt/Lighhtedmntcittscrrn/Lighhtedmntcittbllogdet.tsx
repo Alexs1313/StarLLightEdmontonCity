@@ -4,6 +4,7 @@ import {useFocusEffect} from '@react-navigation/native';
 import {useCallback, useState} from 'react';
 import {
   Image,
+  Platform,
   Pressable,
   ScrollView,
   Share,
@@ -73,7 +74,9 @@ const Lighhtedmntcittbllogdet = ({navigation, route}) => {
             <Image source={require('../../elements/i/lighhtedmntheadic.png')} />
             <View style={styles.lighhtedmntcittHeaderTextCol}>
               <Text style={styles.lighhtedmntcittHeaderTitleLine}>
-                {'Welcome to StarLight Casual Edmonton'}
+                {Platform.OS === 'ios'
+                  ? 'Welcome to StarLight Casual Edmonton'
+                  : 'Welcome to StarLLight Edmonton City'}
               </Text>
             </View>
           </View>

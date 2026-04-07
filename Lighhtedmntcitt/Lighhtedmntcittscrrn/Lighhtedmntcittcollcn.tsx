@@ -331,7 +331,9 @@ const Lighhtedmntcittcollcn = () => {
         <View style={styles.lighhtedmntcittHeaderRow}>
           <Image source={require('../../elements/i/lighhtedmntheadic.png')} />
           <Text style={styles.lighhtedmntcittHeaderTitle}>
-            {'Welcome to StarLight Casual Edmonton'}
+            {Platform.OS === 'ios'
+              ? 'Welcome to StarLight Casual Edmonton'
+              : 'Welcome to StarLLight Edmonton City'}
           </Text>
         </View>
       </View>

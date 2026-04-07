@@ -1,6 +1,10 @@
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 
-import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/native';
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 
 import {useCallback, useMemo, useRef, useState} from 'react';
 import {
@@ -183,7 +187,9 @@ const Lighhtedmntcittmap = () => {
       if (!lighhtedmntcittPlaceId) {
         return;
       }
-      if (lighhtedmntcittLastFocusedPlaceId.current === lighhtedmntcittPlaceId) {
+      if (
+        lighhtedmntcittLastFocusedPlaceId.current === lighhtedmntcittPlaceId
+      ) {
         return;
       }
 
@@ -247,7 +253,9 @@ const Lighhtedmntcittmap = () => {
           <View style={styles.lighhtedmntcittHeaderRow}>
             <Image source={require('../../elements/i/lighhtedmntheadic.png')} />
             <Text style={styles.lighhtedmntcittHeaderTitle}>
-              {'Welcome to StarLight Casual Edmonton'}
+              {Platform.OS === 'ios'
+                ? 'Welcome to StarLight Casual Edmonton'
+                : 'Welcome to StarLLight Edmonton City'}
             </Text>
           </View>
         </View>
@@ -285,7 +293,6 @@ const Lighhtedmntcittmap = () => {
             {height: lighhtedmntcittMapHeight},
           ]}>
           <MapView
-            // Force a re-mount so marker filtering is always applied.
             key={lighhtedmntcittFilter}
             ref={ref => {
               lighhtedmntcittMapRef.current = ref;
@@ -303,74 +310,74 @@ const Lighhtedmntcittmap = () => {
                 tracksViewChanges={false}
                 pinColor="#FFFFFF"
                 onPress={() => setLighhtedmntcittSelected(place)}>
-                <Image
-                  source={require('../../elements/i/lighhtedmntmarker.png')}
-                />
+                {Platform.OS === 'ios' ? (
+                  <Image
+                    source={require('../../elements/i/lighhtedmntmarker.png')}
+                  />
+                ) : null}
               </Marker>
             ))}
           </MapView>
+
+          {lighhtedmntcittSelected !== null && (
+            <View style={styles.lighhtedmntcittModalBackdrop}>
+              <Pressable
+                style={styles.lighhtedmntcittModalBackdrop}
+                onPress={() => setLighhtedmntcittSelected(null)}>
+                <Pressable
+                  onPress={() => {}}
+                  style={[
+                    styles.lighhtedmntcittCard,
+                    {maxWidth: Math.min(360, lighhtedmntcittW - 32)},
+                  ]}>
+                  {lighhtedmntcittSelected ? (
+                    <>
+                      <Pressable
+                        style={({pressed}) => [
+                          styles.lighhtedmntcittCardClose,
+                          pressed && styles.lighhtedmntcittCardClosePressed,
+                        ]}
+                        onPress={() => setLighhtedmntcittSelected(null)}>
+                        <Image
+                          source={require('../../elements/i/lighhtedmncls.png')}
+                        />
+                      </Pressable>
+                      <Pressable onPress={lighhtedmntcittOnOpenDetail}>
+                        <View style={styles.lighhtedmntcittCardImageWrap}>
+                          {lighhtedmntcittSelected.image && (
+                            <Image
+                              source={lighhtedmntcittSelected.image}
+                              style={styles.lighhtedmntcittCardImage}
+                              resizeMode="cover"
+                            />
+                          )}
+                          <View style={styles.lighhtedmntcittCardOverlay}>
+                            <Text
+                              style={styles.lighhtedmntcittCardTitle}
+                              numberOfLines={2}>
+                              {lighhtedmntcittSelected.name}
+                            </Text>
+                            <View style={styles.lighhtedmntcittCardCoordsRow}>
+                              <Image
+                                source={require('../../elements/i/lighhtedmnthloc.png')}
+                              />
+                              <Text
+                                style={styles.lighhtedmntcittCardCoords}
+                                numberOfLines={1}>
+                                {lighhtedmntcittSelected.coords}
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                      </Pressable>
+                    </>
+                  ) : null}
+                </Pressable>
+              </Pressable>
+            </View>
+          )}
         </View>
       </View>
-
-      <Modal
-        visible={lighhtedmntcittSelected !== null}
-        transparent
-        animationType="fade"
-        onRequestClose={() => setLighhtedmntcittSelected(null)}>
-        <Pressable
-          style={styles.lighhtedmntcittModalBackdrop}
-          onPress={() => setLighhtedmntcittSelected(null)}>
-          <Pressable
-            onPress={() => {}}
-            style={[
-              styles.lighhtedmntcittCard,
-              {maxWidth: Math.min(360, lighhtedmntcittW - 32)},
-            ]}>
-            {lighhtedmntcittSelected ? (
-              <>
-                <Pressable
-                  style={({pressed}) => [
-                    styles.lighhtedmntcittCardClose,
-                    pressed && styles.lighhtedmntcittCardClosePressed,
-                  ]}
-                  onPress={() => setLighhtedmntcittSelected(null)}>
-                  <Image
-                    source={require('../../elements/i/lighhtedmncls.png')}
-                  />
-                </Pressable>
-                <Pressable onPress={lighhtedmntcittOnOpenDetail}>
-                  <View style={styles.lighhtedmntcittCardImageWrap}>
-                    {lighhtedmntcittSelected.image && (
-                      <Image
-                        source={lighhtedmntcittSelected.image}
-                        style={styles.lighhtedmntcittCardImage}
-                        resizeMode="cover"
-                      />
-                    )}
-                    <View style={styles.lighhtedmntcittCardOverlay}>
-                      <Text
-                        style={styles.lighhtedmntcittCardTitle}
-                        numberOfLines={2}>
-                        {lighhtedmntcittSelected.name}
-                      </Text>
-                      <View style={styles.lighhtedmntcittCardCoordsRow}>
-                        <Image
-                          source={require('../../elements/i/lighhtedmnthloc.png')}
-                        />
-                        <Text
-                          style={styles.lighhtedmntcittCardCoords}
-                          numberOfLines={1}>
-                          {lighhtedmntcittSelected.coords}
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </Pressable>
-              </>
-            ) : null}
-          </Pressable>
-        </Pressable>
-      </Modal>
     </View>
   );
 };
@@ -459,11 +466,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#1a1a1a',
   },
   lighhtedmntcittModalBackdrop: {
-    flex: 1,
-
+    ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
+    zIndex: 1000,
+    top: Platform.OS === 'ios' ? 80 : 0,
+    alignSelf: 'center',
   },
   lighhtedmntcittCard: {
     width: '60%',
