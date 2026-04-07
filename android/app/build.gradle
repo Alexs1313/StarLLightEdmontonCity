@@ -79,7 +79,7 @@ android {
 
     namespace "com.starllightedmontoncity"
     defaultConfig {
-        applicationId "com.starllightedmontoncity"
+        applicationId "com.starlightcasualedmonton"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
