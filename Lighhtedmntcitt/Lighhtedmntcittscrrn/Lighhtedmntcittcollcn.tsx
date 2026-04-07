@@ -331,9 +331,7 @@ const Lighhtedmntcittcollcn = () => {
         <View style={styles.lighhtedmntcittHeaderRow}>
           <Image source={require('../../elements/i/lighhtedmntheadic.png')} />
           <Text style={styles.lighhtedmntcittHeaderTitle}>
-            {Platform.OS === 'ios'
-              ? 'Welcome to StarLight Casual Edmonton'
-              : 'Welcome to StarLLight Edmonton City'}
+            Welcome to StarLight Casual Edmonton
           </Text>
         </View>
       </View>
@@ -356,7 +354,9 @@ const Lighhtedmntcittcollcn = () => {
 
   return (
     <>
-      <View style={styles.lighhtedmntcittRoot}>
+      <LinearGradient
+        colors={['rgb(206, 31, 69)', 'rgb(92, 8, 15)']}
+        style={styles.lighhtedmntcittRoot}>
         <FlatList
           data={lighhtedmntcittCollcnWalls}
           keyExtractor={lighhtedmntcittIt => lighhtedmntcittIt.id}
@@ -374,7 +374,7 @@ const Lighhtedmntcittcollcn = () => {
           ]}
           showsVerticalScrollIndicator={false}
         />
-      </View>
+      </LinearGradient>
       <LinearGradient
         pointerEvents="none"
         colors={['rgba(174, 6, 6, 0)', 'rgba(0, 0, 0, 0.48)']}

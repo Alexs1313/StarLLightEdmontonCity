@@ -1,23 +1,25 @@
 import type {ReactNode} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Lighhtedmntcittlayyt = ({children}: {children: ReactNode}) => {
   return (
-    <View style={styles.lighhtedmntcittBackground}>
+    <LinearGradient
+      colors={['rgb(206, 31, 69)', 'rgb(92, 8, 15)']}
+      style={styles.lighhtedmntcittBackground}>
       <ScrollView
         nestedScrollEnabled
         contentContainerStyle={styles.lighhtedmntcittContent}
         showsVerticalScrollIndicator={false}>
         {children}
       </ScrollView>
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   lighhtedmntcittBackground: {
     flex: 1,
-    backgroundColor: '#E8304B',
   },
   lighhtedmntcittContent: {
     flexGrow: 1,

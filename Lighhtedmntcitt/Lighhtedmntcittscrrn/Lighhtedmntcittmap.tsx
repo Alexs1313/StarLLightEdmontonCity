@@ -27,6 +27,7 @@ import {
   type LighhtedmntcittPlccPlace,
 } from './Lighhtedmntcittplccdatta';
 import Orientation from 'react-native-orientation-locker';
+import LinearGradient from 'react-native-linear-gradient';
 
 const lighhtedmntcittMapCategoryOrder: LighhtedmntcittPlccCategory[] = [
   'leisure',
@@ -246,16 +247,16 @@ const Lighhtedmntcittmap = () => {
   };
 
   return (
-    <View style={styles.lighhtedmntcittRoot}>
+    <LinearGradient
+      colors={['rgb(206, 31, 69)', 'rgb(92, 8, 15)']}
+      style={styles.lighhtedmntcittRoot}>
       <View style={styles.lighhtedmntcittContent}>
         <View style={styles.lighhtedmntcittHeader}>
           <View style={styles.lighhtedmntcittStatusDot} />
           <View style={styles.lighhtedmntcittHeaderRow}>
             <Image source={require('../../elements/i/lighhtedmntheadic.png')} />
             <Text style={styles.lighhtedmntcittHeaderTitle}>
-              {Platform.OS === 'ios'
-                ? 'Welcome to StarLight Casual Edmonton'
-                : 'Welcome to StarLLight Edmonton City'}
+              Welcome to StarLight Casual Edmonton
             </Text>
           </View>
         </View>
@@ -378,7 +379,7 @@ const Lighhtedmntcittmap = () => {
           )}
         </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -409,7 +410,6 @@ const styles = StyleSheet.create({
 
   lighhtedmntcittRoot: {
     flex: 1,
-    backgroundColor: '#E8304B',
   },
   lighhtedmntcittContent: {
     paddingTop: 50,

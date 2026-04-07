@@ -74,9 +74,7 @@ const Lighhtedmntcittbllogdet = ({navigation, route}) => {
             <Image source={require('../../elements/i/lighhtedmntheadic.png')} />
             <View style={styles.lighhtedmntcittHeaderTextCol}>
               <Text style={styles.lighhtedmntcittHeaderTitleLine}>
-                {Platform.OS === 'ios'
-                  ? 'Welcome to StarLight Casual Edmonton'
-                  : 'Welcome to StarLLight Edmonton City'}
+                Welcome to StarLight Casual Edmonton
               </Text>
             </View>
           </View>

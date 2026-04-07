@@ -4,7 +4,6 @@ import {useCallback, useMemo, useState} from 'react';
 import type {StackNavigationProp} from '@react-navigation/stack';
 import {
   Image,
-  Platform,
   Pressable,
   ScrollView,
   Share,
@@ -201,9 +200,7 @@ const Lighhtedmntcittknowlgpla = ({
                   source={require('../../elements/i/lighhtedmntheadic.png')}
                 />
                 <Text style={styles.lighhtedmntcittHeaderTitle}>
-                  {Platform.OS === 'ios'
-                    ? 'Welcome to StarLight Casual Edmonton'
-                    : 'Welcome to StarLLight Edmonton City'}
+                  Welcome to StarLight Casual Edmonton
                 </Text>
               </View>
             </View>
@@ -348,7 +345,7 @@ const Lighhtedmntcittknowlgpla = ({
                   source={require('../../elements/i/lighhtedmntheadic.png')}
                 />
                 <Text style={styles.lighhtedmntcittHeaderTitle}>
-                  Welcome to StarLLight Edmonton City App
+                  Welcome to StarLight Casual Edmonton
                 </Text>
               </View>
             </View>

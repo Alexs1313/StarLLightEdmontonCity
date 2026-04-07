@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
+import Lighhtedmntcittlayyt from '../Lighhtedmntcittcpnts/Lighhtedmntcittlayyt';
 
 const lighhtedmntcittData = [
   {
@@ -65,34 +66,28 @@ const Lighhtedmntcittonbr = () => {
   };
 
   return (
-    <ImageBackground
-      source={require('../../elements/i/lighhtedmntcittbg.png')}
-      style={{flex: 1}}>
-      <ScrollView
-        contentContainerStyle={{flexGrow: 1}}
-        showsVerticalScrollIndicator={false}>
-        <View style={styles.lighhtedmntcittContainer}>
-          <Image source={lighhtedmntcittData[lighhtedmntcittIdx].image} />
-          <View style={styles.lighhtedmntcittTitleContainer}>
-            <Text style={styles.lighhtedmntcittTitle}>
-              {lighhtedmntcittData[lighhtedmntcittIdx].title}
-            </Text>
-            <Text style={styles.lighhtedmntcittDescription}>
-              {lighhtedmntcittData[lighhtedmntcittIdx].description}
-            </Text>
+    <Lighhtedmntcittlayyt>
+      <View style={styles.lighhtedmntcittContainer}>
+        <Image source={lighhtedmntcittData[lighhtedmntcittIdx].image} />
+        <View style={styles.lighhtedmntcittTitleContainer}>
+          <Text style={styles.lighhtedmntcittTitle}>
+            {lighhtedmntcittData[lighhtedmntcittIdx].title}
+          </Text>
+          <Text style={styles.lighhtedmntcittDescription}>
+            {lighhtedmntcittData[lighhtedmntcittIdx].description}
+          </Text>
 
-            <TouchableOpacity
-              activeOpacity={0.8}
-              style={styles.lighhtedmntcittButton}
-              onPress={lighhtedmntcittNext}>
-              <Text style={styles.lighhtedmntcittButtonText}>
-                {lighhtedmntcittData[lighhtedmntcittIdx].buttonText}
-              </Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.lighhtedmntcittButton}
+            onPress={lighhtedmntcittNext}>
+            <Text style={styles.lighhtedmntcittButtonText}>
+              {lighhtedmntcittData[lighhtedmntcittIdx].buttonText}
+            </Text>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
-    </ImageBackground>
+      </View>
+    </Lighhtedmntcittlayyt>
   );
 };
 
